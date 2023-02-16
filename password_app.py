@@ -2,16 +2,18 @@ import mysql.connector
 from datetime import datetime
 import password_generator as pg
 
+# Creatin connection to existing database connection
 db = mysql.connector.connect(
     host="localhost",
-    user="jacob",
-    passwd="1217",
-    database = "password_database"
+    user="",  # connection user
+    passwd="",  # connection password
+    database = "" # database name
     )
 
+# Creating database cursor
 cursor = db.cursor()
 
-
+# Creating database
 '''
 cursor.execute("""CREATE TABLE passwords (
                                     password_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -20,19 +22,13 @@ cursor.execute("""CREATE TABLE passwords (
 )""")
 '''
 
-
-# cursor.execute("INSERT INTO passwords (service, password) VALUES (%s, %s)", ("facebook", "dd6^7t&^G^@h"))
-# db.commit()
-
-
 cursor.execute("SELECT * FROM passwords")
 
+# Printing existing passwords
 for x in cursor:
     print(f"Service: {x[1]}")
     print(f"Password: {x[2]}")
     print("")
-
-# data = pg.criteria_input()
 
 add_password = input("Do you want to add new password? (y/n):  ").lower()
 
