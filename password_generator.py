@@ -1,7 +1,7 @@
 import string
 import random
 
-# Function returning password characteristics
+# Function validating user's input and returning password characteristics
 def criteria_input():
     valid_answers = ["y", "n"]
 
